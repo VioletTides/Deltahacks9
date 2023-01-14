@@ -1,9 +1,9 @@
 import { createUserWithEmailAndPassword } from "firebase/auth"
 import { React } from "react"
 import { useState } from "react"
-import { auth } from "./firebase-config"
+import { auth } from "../firebase-config"
 
-function CreateAccount(){
+function CreateAccount() {
     const [registerEmail, setRegisterEmail] = useState("")
     const [registerPassword, setRegisterPassword] = useState("")
     
@@ -29,4 +29,4 @@ function CreateAccount(){
     )
 }
 
-export default CreateAccount
+export default CreateAccount;
