@@ -100,11 +100,21 @@ export default function Exports() {
                         </div>
                     </Col>
                     <Col>
-                        <div style={{width:"30vw", right:"0", position:"absolute"}}>
+                        <Row style={{width:"30vw", right:"0", position:"absolute"}}>
                             <h1>Export</h1>
                             <h2>Latitude: {lat}</h2>
                             <h2>Longitude: {long}</h2>
-                        </div>
+                        </Row>
+                        <Row style={{width:"30vw", right:"0", bottom:"0", position:"absolute"}}>
+                            <h1>Export To</h1>
+                            <p><strong>Food Bank: </strong> Test Food Bank</p>
+                            <ul class="list-group">
+                                <li class="list-group-item">Fruits & Vegetables:  10</li>
+                                <li class="list-group-item">Grains:  10</li>
+                                <li class="list-group-item">Meat & Alternatives:  123</li>
+                                <li class="list-group-item">Dairy & Alternatives:  9</li>
+                            </ul>
+                        </Row>
                     </Col>
                 </Row>
             </Container>
