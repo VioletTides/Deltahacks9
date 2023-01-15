@@ -113,7 +113,7 @@ export default function Exports() {
                             <h2>Longitude: {long}</h2>
                             <div className="w-100 text-center mt-2">
                             </div>
-                            <Form className="">
+                            <Form>
                                 <Form.Group id="destination">
                                     <Form.Label>Destination UID</Form.Label>
                                     <Form.Control type="text" ref={latRef} required />
@@ -139,10 +139,18 @@ export default function Exports() {
                                 </Button>
                                 <Link to="/">Back to Dashboard</Link>
                             </Form>
+                            <h1>Export To</h1>
+                            <p><strong>Food Bank: </strong> Test Food Bank</p>
+                            <ul class="list-group">
+                                <li class="list-group-item">Fruits & Vegetables:  10</li>
+                                <li class="list-group-item">Grains:  10</li>
+                                <li class="list-group-item">Meat & Alternatives:  123</li>
+                                <li class="list-group-item">Dairy & Alternatives:  9</li>
+                            </ul>
                         </Row>
                     </Col>
                 </Row>
-            </Container>
+            </Container >
         </>
     )
 }
