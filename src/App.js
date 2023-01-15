@@ -5,8 +5,6 @@ import Login from "./pages/Login";
 import Dashboard from "./pages/Dashboard";
 import { AuthProvider } from "./pages/AuthContext";
 import { Container } from "react-bootstrap";
-// import { AuthProvider } from "./pages/AuthContext";
-import LeafletMap from "./components/LeafletMap/LeafletMap";
 
 function App() {
   return(
@@ -17,7 +15,7 @@ function App() {
             <Routes>
               <Route path="/signup" element={<Signup />} />
               <Route path="/login" element={<Login />} />
-              <Route path="/dashboard" element={<Dashboard />} />
+              <Route path="/" element={<Dashboard />} />
             </Routes>
           </AuthProvider>
         </Router>
