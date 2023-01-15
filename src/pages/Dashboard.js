@@ -36,3 +36,22 @@ export default function Dashboard() {
         </>
     ) 
 }
+
+// function signup(email, password, lat, long) {
+//     createUserWithEmailAndPassword(auth, email, password).then((credentials)=> {
+//       const uid = credentials.user.uid;
+//       set(ref(db, `${uid}`), {
+//         email: email,
+//         inventory: {
+//           fruitveg: 0,
+//           dairyalt: 0,
+//           grains: 0,
+//           meatalt: 0
+//         },
+//         lat: lat,
+//         long: long,
+//       })
+//       return credentials
+//     }).catch((error)=>{
+//       return error
+//     })

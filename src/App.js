@@ -1,6 +1,7 @@
 import { React } from "react";
 import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 import Signup from "./pages/Signup";
+import Inventory from "./pages/Inventory";
 import Login from "./pages/Login";
 import Dashboard from "./pages/Dashboard";
 import ForgotPassword from "./pages/ForgotPassword";
@@ -18,6 +19,7 @@ function App() {
               <Route path="/signup" element={<Signup />} />
               <Route path="/login" element={<Login />} />
               <Route path="/" element={<PrivateRoute><Dashboard /></PrivateRoute>} />
+              <Route path="/inventory" element={<PrivateRoute><Inventory /></PrivateRoute>} />
               <Route path="/forgot-password" element={<ForgotPassword />} />
             </Routes>
           </AuthProvider>
