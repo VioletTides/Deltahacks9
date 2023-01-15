@@ -10,3 +10,8 @@ Allows food banks to create unique users using Firebase Auth and keep track of c
 ## Future Plans
 Combining economic in combination with stock in a weighted shortest path algorithm, so that food banks in low income area will have more stock.
 Making it possible to add multiple food banks in one export form, implementing Dijkstra's algorithm with Leaflet to optimize fuel consumption and travel time.
+
+## Running the Code
+  - install node.js
+  - run ```npm run install```
+  - run ```npm run start```
