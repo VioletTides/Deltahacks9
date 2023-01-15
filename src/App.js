@@ -8,6 +8,7 @@ import ForgotPassword from "./pages/ForgotPassword";
 import { AuthProvider } from "./pages/AuthContext";
 import { Container } from "react-bootstrap";
 import PrivateRoute from "./components/PrivateRoute";
+import UpdateProfile from "./pages/UpdateProfile";
 
 function App() {
   return(
@@ -21,6 +22,7 @@ function App() {
               <Route path="/" element={<PrivateRoute><Dashboard /></PrivateRoute>} />
               <Route path="/inventory" element={<PrivateRoute><Inventory /></PrivateRoute>} />
               <Route path="/forgot-password" element={<ForgotPassword />} />
+              <Route path="update-profile" element={<PrivateRoute><UpdateProfile /></PrivateRoute>} />
             </Routes>
           </AuthProvider>
         </Router>
