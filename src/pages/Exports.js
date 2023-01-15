@@ -58,7 +58,7 @@ export default function Exports() {
                 <Row>
                     <Col style={{height:"100vh" }}>
                         <div style={{width:"70vw", left:"0", position:"absolute"}}>
-                            <LeafletMap />
+                            <LeafletMap/>
                         </div>
                     </Col>
                     <Col>

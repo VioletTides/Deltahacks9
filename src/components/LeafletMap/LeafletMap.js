@@ -16,7 +16,7 @@ const LeafletMap = () => {
     //   }, [globals, globals.coords, setLeafCoords]);
     return (
         <>
-            <MapContainer center={defaultTestPosition} zoom={8} scrollWheelZoom={false}>
+            <MapContainer center={defaultTestPosition} zoom={8} scrollWheelZoom={false} style={{height:"100vh"}}>
                 <TileLayer
                 attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
                 url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
