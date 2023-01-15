@@ -2,7 +2,7 @@ import { initializeApp } from "firebase/app";
 import { getAuth } from "firebase/auth";
 import { getDatabase } from "firebase/database";
 
-const firebaseConfig = {
+export const firebaseConfig = {
   apiKey: "AIzaSyB3Rqw_-OkzGw6DZXRVtoLn6Fv8eqtkB_M",
   authDomain: "deltahacks9-28454.firebaseapp.com",
   databaseURL: "https://deltahacks9-28454-default-rtdb.firebaseio.com/",
