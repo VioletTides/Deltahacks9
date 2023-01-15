@@ -18,6 +18,7 @@ export default function Exports() {
 
     const [lat, setLat] = useState(null);
     const [long, setLong] = useState(null);
+    let uid = auth.currentUser.uid;
 
     async function getLatLong() {
         let lat, long;
@@ -50,6 +51,43 @@ export default function Exports() {
     //     globals.addCoords([[42.777702, -78.233238],[42.577702, -77.233238]])
     // }, [])
 
+    // getting stock start
+    const [fruitsveg, setFruitsveg] = useState(null);
+    const [grains, setGrains] = useState(null);
+    const [dairyalt, setDairyalt] = useState(null);
+    const [meatalt, setMeatalt] = useState(null);
+    let quantity;
+
+    async function getQuantities(uid=auth.currentUser.uid) {
+        console.log(uid)
+        let fruitsveg, grains, dairyalt, meatalt;
+        await get(ref(db, `${uid}/inventory`))
+            .then(snapshot => {
+                const userData = snapshot.val();
+                console.log(userData)
+                fruitsveg = userData.fruitsveg;
+                grains = userData.grains;
+                dairyalt = userData.dairyalt;
+                meatalt = userData.meatalt;
+            })
+            .catch(error => {
+                console.log(error);
+            });
+        return { fruitsveg, grains, dairyalt, meatalt };
+    }
+    
+    useEffect(() => { 
+        getQuantities(uid)
+            .then(({ fruitsveg: fruitsvegValue, grains: grainsValue, dairyalt:dairyaltValue, meatalt:meataltValue }) => {
+                setFruitsveg(fruitsvegValue);
+                setGrains(grainsValue);
+                setDairyalt(dairyaltValue);
+                setMeatalt(meataltValue);
+            });
+        
+    }, [])
+
+    // getting stock end
 
     return (
         <>
