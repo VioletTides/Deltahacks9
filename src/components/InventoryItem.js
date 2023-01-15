@@ -1,7 +1,7 @@
 import fruitvegpng from '../assets/fruitveg.png'
 import grainspng from '../assets/grains.png'
-import meatalt from '../assets/meatalt.png'
-import milkalt from '../assets/milkalt.png'
+import meataltpng from '../assets/meatalt.png'
+import milkaltpng from '../assets/milkalt.png'
 
 import { auth, db } from "../firebase-config"
 import { onValue, set, ref, get } from "firebase/database"
@@ -73,10 +73,10 @@ export default function InventoryItem({foodGroupTitle, desc, foodGroupDb}) { // 
         image = grainspng 
         quantity = grains
     } else if (foodGroupDb =="meatalt") {
-        image = meatalt
+        image = meataltpng
         quantity = meatalt
     } else {
-        image = milkalt
+        image = milkaltpng
         quantity = dairyalt
     }
     return (
