@@ -5,6 +5,8 @@ import Login from "./pages/Login";
 import Dashboard from "./pages/Dashboard";
 import { AuthProvider } from "./pages/AuthContext";
 import { Container } from "react-bootstrap";
+// import { AuthProvider } from "./pages/AuthContext";
+import LeafletMap from "./components/LeafletMap/LeafletMap";
 
 function App() {
   return(
