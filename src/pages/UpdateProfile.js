@@ -3,21 +3,7 @@ import { Form, Button, Card, Alert } from "react-bootstrap"
 import { useAuth } from "./AuthContext"
 import { Link, useNavigate } from "react-router-dom"
 import { db } from '../firebase-config';
-import { ref, get } from 'firebase/database';
-
-async function getLatLong(uid) {
-    let lat, long;
-    await get(ref(db, `${uid}`))
-        .then(snapshot => {
-            const userData = snapshot.val();
-            lat = userData.lat;
-            long = userData.long;
-        })
-        .catch(error => {
-            console.log(error);
-        });
-    return { lat, long };
-}
+import { ref, get, set } from 'firebase/database';
 
 export default function UpdateProfile() {
     const emailRef = useRef()
@@ -27,19 +13,33 @@ export default function UpdateProfile() {
     const [error, setError] = useState("")
     const [loading, setLoading] = useState(false)
     const navigate = useNavigate()
-    const [lat, setLat] = useState(null);
-    const [long, setLong] = useState(null);
+    const latRef = useRef();
+    const longRef = useRef();
+
+    async function getLatLong(uid) {
+        let lat, long;
+        await get(ref(db, `${uid}`))
+            .then(snapshot => {
+                const userData = snapshot.val();
+                lat = userData.lat;
+                long = userData.long;
+            })
+            .catch(error => {
+                console.log(error);
+            });
+        return { lat, long };
+    }
 
     useEffect(() => {
-        if(currentUser) {
+        if (currentUser) {
             getLatLong(currentUser.uid)
-            .then(({ lat: latValue, long: longValue }) => {
-                setLat(latValue)    ;
-                setLong(longValue);
-            });
+                .then(({ lat, long }) => {
+                    latRef.current.value = lat;
+                    longRef.current.value = long;
+                });
         }
     }, [currentUser]);
-    
+
 
     function handleSubmit(e) {
         e.preventDefault()
@@ -58,7 +58,10 @@ export default function UpdateProfile() {
             promises.push(updatePassword(passwordRef.current.value))
         }
 
-        
+        const lat = latRef.current.value;
+        const long = longRef.current.value;
+        // Update the latitude and longitude values in the database
+        set(ref(db, `${currentUser.uid}`), { lat, long });
 
         Promise.all(promises)
             .then(() => {
@@ -108,14 +111,14 @@ export default function UpdateProfile() {
                             <Form.Label>Latitude</Form.Label>
                             <Form.Control
                                 type="number"
-                                defaultValue={lat}
+                                ref={latRef}
                             />
                         </Form.Group>
                         <Form.Group id="long">
                             <Form.Label>Longitude</Form.Label>
                             <Form.Control
                                 type="number"
-                                defaultValue={long}
+                                ref={longRef}
                             />
                         </Form.Group>
                         <Button disabled={loading} className="w-100 mt-4" type="submit">
