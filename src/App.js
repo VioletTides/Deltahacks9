@@ -1,14 +1,14 @@
 import { React } from "react";
 import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
-import { Home } from "./pages/Home";
-import CreateAccount from "./pages/CreateAccount";
+import Signup from "./pages/Signup";
+import { AuthProvider } from "./pages/AuthContext";
+// import { AuthProvider } from "./pages/AuthContext";
 
 function App() {
   return(
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/CreateAccount" element={<CreateAccount />} />
-      </Routes>
+    <AuthProvider>
+      <Signup />
+    </AuthProvider>
   )
 }
 

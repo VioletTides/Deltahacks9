@@ -1,9 +1,11 @@
 import { initializeApp } from "firebase/app";
 import { getAuth } from "firebase/auth";
+import { getFirestore } from "firebase/firestore";
 
 const firebaseConfig = {
   apiKey: "AIzaSyB3Rqw_-OkzGw6DZXRVtoLn6Fv8eqtkB_M",
   authDomain: "deltahacks9-28454.firebaseapp.com",
+  databaseURL: "https://deltahacks9-28454-default-rtdb.firebaseio.com",
   projectId: "deltahacks9-28454",
   storageBucket: "deltahacks9-28454.appspot.com",
   messagingSenderId: "948176226697",
@@ -13,3 +15,4 @@ const firebaseConfig = {
 
 const app = initializeApp(firebaseConfig);
 export const auth = getAuth(app);
+export const db = getFirestore(app);
