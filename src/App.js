@@ -2,16 +2,30 @@ import { React } from "react";
 import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 import Signup from "./pages/Signup";
 import Inventory from "./pages/Inventory";
+import Login from "./pages/Login";
+import Dashboard from "./pages/Dashboard";
+import ForgotPassword from "./pages/ForgotPassword";
 import { AuthProvider } from "./pages/AuthContext";
-// import { AuthProvider } from "./pages/AuthContext";
-import LeafletMap from "./components/LeafletMap/LeafletMap";
+import { Container } from "react-bootstrap";
+import PrivateRoute from "./components/PrivateRoute";
 
 function App() {
   return(
-    <AuthProvider>
-      {/* <Signup /> */}
-      <Inventory />
-    </AuthProvider>
+    <Container className="d-flex align-items-center justify-content-center" style={{ minHeight: "100vh" }}>
+      <div className="w-100" style={{ maxWidth: "400px" }}>
+        <Router>
+          <AuthProvider>
+            <Routes>
+              <Route path="/signup" element={<Signup />} />
+              <Route path="/login" element={<Login />} />
+              <Route path="/" element={<PrivateRoute><Dashboard /></PrivateRoute>} />
+              <Route path="/inventory" element={<PrivateRoute><Inventory /></PrivateRoute>} />
+              <Route path="/forgot-password" element={<ForgotPassword />} />
+            </Routes>
+          </AuthProvider>
+        </Router>
+      </div>
+    </Container>
   )
 }
 
