@@ -5,7 +5,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { db } from '../firebase-config';
 import { ref, get } from 'firebase/database';
 
-async function getLatLong(uid) {
+export async function getLatLong(uid) {
     let lat, long;
     await get(ref(db, `${uid}`))
         .then(snapshot => {
@@ -18,6 +18,32 @@ async function getLatLong(uid) {
         });
     return {lat, long};
 }
+
+// export async function getInventory(uid) {
+//     let inventory;
+//     await get(ref(db, `${uid}`))
+//         .then(snapshot => {
+//             const userData = snapshot.val();
+//             inventory = userData.inventory;
+//         })
+//         .catch(error => {
+//             console.log(error);
+//         });
+//     return inventory;
+// }
+
+// export async function updateInventory(currentUser) {
+//     const [inventory, setInventory] = useState(null);
+//     useEffect(() => {
+//         if(currentUser) {
+//             getInventory(currentUser.uid)
+//             .then(({ inventory: inventoryValue }) => {
+//                 setInventory(inventoryValue);
+//             });
+//         }
+//     }, [currentUser]);
+
+// }
 
 export default function Dashboard() {
     const [error, setError] = useState("");
