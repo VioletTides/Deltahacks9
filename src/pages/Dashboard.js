@@ -2,12 +2,23 @@ import React, { useState } from 'react';
 import { Card, Button, Alert } from 'react-bootstrap';
 import { useAuth } from './AuthContext';
 import { Link, useNavigate } from 'react-router-dom';
+import {get, ref } from 'firebase/database';
+import {db} from '../firebase-config';
 
 export default function Dashboard() {
     const [error, setError] = useState("")
     const { currentUser, logout } = useAuth()
     const Navigate = useNavigate()
 
+    async function updateProfile(db, uid) {
+        console.log("testt")
+        get(ref(db, uid)).then((snapshot)=> {
+            console.log(snapshot.val())
+            return snapshot;
+        }).catch((error)=>{
+            console.log(error)
+        })
+    }
     async function handleLogout() {
         try {
             setError("")
@@ -25,6 +36,7 @@ export default function Dashboard() {
                 <Card.Body>
                     <h2 className="text-center mb-4">Profile</h2>
                     {error && <Alert variant="danger">{error}</Alert>}
+                    <p>{updateProfile(db, currentUser.uid)}</p>
                     <div>
                         <strong>Email:</strong> {currentUser.email}
                     </div>
