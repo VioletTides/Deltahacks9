@@ -21,7 +21,7 @@ export default function Exports() {
     const fruitsvegRef = useRef();
     const grainsRef = useRef();
     const dairyaltRef = useRef();
-    const meataltRef = useRef();   
+    const meataltRef = useRef();
 
     const [lat, setLat] = useState(null);
     const [long, setLong] = useState(null);
@@ -65,7 +65,7 @@ export default function Exports() {
     const [meatalt, setMeatalt] = useState(null);
     let quantity;
 
-    async function getQuantities(uid=auth.currentUser.uid) {
+    async function getQuantities(uid = auth.currentUser.uid) {
         console.log(uid)
         let fruitsveg, grains, dairyalt, meatalt;
         await get(ref(db, `${uid}/inventory`))
@@ -82,16 +82,16 @@ export default function Exports() {
             });
         return { fruitsveg, grains, dairyalt, meatalt };
     }
-    
-    useEffect(() => { 
+
+    useEffect(() => {
         getQuantities(uid)
-            .then(({ fruitsveg: fruitsvegValue, grains: grainsValue, dairyalt:dairyaltValue, meatalt:meataltValue }) => {
+            .then(({ fruitsveg: fruitsvegValue, grains: grainsValue, dairyalt: dairyaltValue, meatalt: meataltValue }) => {
                 setFruitsveg(fruitsvegValue);
                 setGrains(grainsValue);
                 setDairyalt(dairyaltValue);
                 setMeatalt(meataltValue);
             });
-        
+
     }, [])
 
     // getting stock end
@@ -107,40 +107,39 @@ export default function Exports() {
                         </div>
                     </Col>
                     <Col>
-                        <div style={{ width: "30vw", right: "0", position: "absolute" }}>
+                        <Row style={{ width: "30vw", right: "0", position: "absolute" }}>
                             <h1>Export</h1>
                             <h2>Latitude: {lat}</h2>
                             <h2>Longitude: {long}</h2>
                             <div className="w-100 text-center mt-2">
-                        </div>
-                        <Form className="mx-4">
-                            <Form.Group id="destination">
-                                <Form.Label>Destination UID</Form.Label>
-                                <Form.Control type="text" ref={latRef} required />
-                            </Form.Group>
-                            <Form.Group id="fruitsveg">
-                                <Form.Label>Fruits and Vegetables</Form.Label>
-                                <Form.Control type="number" ref={fruitsvegRef} required />
-                            </Form.Group>
-                            <Form.Group id="grains">
-                                <Form.Label>Grains</Form.Label>
-                                <Form.Control type="number" ref={grainsRef} required />
-                            </Form.Group>
-                            <Form.Group id="dairyalt">
-                                <Form.Label>Dairy Alternatives</Form.Label>
-                                <Form.Control type="number" ref={dairyaltRef} required />
-                            </Form.Group>
-                            <Form.Group id="meatalt">
-                                <Form.Label>Meat Alternatives</Form.Label>
-                                <Form.Control type="number" ref={meataltRef} required />
-                            </Form.Group>
-                            <Button className="w-100 mt-4" type="submit">
-                                Export
-                            </Button>
-                            <Link to="/">Back to Dashboard</Link>
-                        </Form>
-                        
-                        </div>                        
+                            </div>
+                            <Form className="">
+                                <Form.Group id="destination">
+                                    <Form.Label>Destination UID</Form.Label>
+                                    <Form.Control type="text" ref={latRef} required />
+                                </Form.Group>
+                                <Form.Group id="fruitsveg">
+                                    <Form.Label>Fruits and Vegetables</Form.Label>
+                                    <Form.Control type="number" ref={fruitsvegRef} required />
+                                </Form.Group>
+                                <Form.Group id="grains">
+                                    <Form.Label>Grains</Form.Label>
+                                    <Form.Control type="number" ref={grainsRef} required />
+                                </Form.Group>
+                                <Form.Group id="dairyalt">
+                                    <Form.Label>Dairy Alternatives</Form.Label>
+                                    <Form.Control type="number" ref={dairyaltRef} required />
+                                </Form.Group>
+                                <Form.Group id="meatalt">
+                                    <Form.Label>Meat Alternatives</Form.Label>
+                                    <Form.Control type="number" ref={meataltRef} required />
+                                </Form.Group>
+                                <Button className="w-100 mt-4" type="submit">
+                                    Export
+                                </Button>
+                                <Link to="/">Back to Dashboard</Link>
+                            </Form>
+                        </Row>
                     </Col>
                 </Row>
             </Container>
