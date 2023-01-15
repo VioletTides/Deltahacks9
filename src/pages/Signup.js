@@ -6,6 +6,8 @@ export default function Signup() {
     const emailRef = useRef()
     const passwordRef = useRef()
     const passwordConfirmRef = useRef() 
+    const latRef = useRef()
+    const longRef = useRef()
     const { signup } = useAuth()
     const [error, setError] = useState("")
     const [loading, setLoading] = useState(false)
@@ -18,7 +20,7 @@ export default function Signup() {
         }
 
         try {
-            await signup(emailRef.current.value, passwordRef.current.value)
+            await signup(emailRef.current.value, passwordRef.current.value, latRef.current.value, longRef.current.value)
         } catch {
             setError("Failed to create an account")
         }
@@ -43,6 +45,14 @@ export default function Signup() {
                     <Form.Group id="password-confirm">
                         <Form.Label>Password Confirmation</Form.Label>
                         <Form.Control type="password" ref={passwordConfirmRef} required />
+                    </Form.Group>
+                    <Form.Group id="lat">
+                        <Form.Label>Latitude: </Form.Label>
+                        <Form.Control type="input" ref={latRef} required />
+                    </Form.Group>
+                    <Form.Group id="long">
+                        <Form.Label>Longtitude</Form.Label>
+                        <Form.Control type="input" ref={longRef} required />
                     </Form.Group>
                     <Button disabled={loading} className="w-100" type="submit">Sign Up</Button>
                 </Form>
