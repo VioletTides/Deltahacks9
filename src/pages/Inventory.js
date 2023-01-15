@@ -2,6 +2,7 @@ import InventoryItem from "../components/InventoryItem"
 // firebase package
 import { getInventory } from "./Dashboard"
 import { useAuth } from './AuthContext';
+import { Link, useNavigate } from 'react-router-dom';
 //
 
 // This is the home page of the website, write all the code for the home page here
@@ -26,6 +27,7 @@ export default function Inventory(){
                     </div>
                 </div>
             </div>
+            <Link to="/">Back to dashboard</Link>
             
         </div>
     )

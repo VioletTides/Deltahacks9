@@ -8,6 +8,7 @@ import Col from 'react-bootstrap/Col';
 import { Container } from "react-bootstrap";
 import Button from 'react-bootstrap/Button';
 import { Link } from "react-router-dom";
+import { Form } from "react-bootstrap";
 
 
 // This is the home page of the website, write all the code for the home page here
@@ -17,6 +18,10 @@ export default function Exports() {
 
     const latRef = useRef();
     const longRef = useRef();
+    const fruitsvegRef = useRef();
+    const grainsRef = useRef();
+    const dairyaltRef = useRef();
+    const meataltRef = useRef();   
 
     const [lat, setLat] = useState(null);
     const [long, setLong] = useState(null);
@@ -107,10 +112,35 @@ export default function Exports() {
                             <h2>Latitude: {lat}</h2>
                             <h2>Longitude: {long}</h2>
                             <div className="w-100 text-center mt-2">
+                        </div>
+                        <Form className="mx-4">
+                            <Form.Group id="destination">
+                                <Form.Label>Destination UID</Form.Label>
+                                <Form.Control type="text" ref={latRef} required />
+                            </Form.Group>
+                            <Form.Group id="fruitsveg">
+                                <Form.Label>Fruits and Vegetables</Form.Label>
+                                <Form.Control type="number" ref={fruitsvegRef} required />
+                            </Form.Group>
+                            <Form.Group id="grains">
+                                <Form.Label>Grains</Form.Label>
+                                <Form.Control type="number" ref={grainsRef} required />
+                            </Form.Group>
+                            <Form.Group id="dairyalt">
+                                <Form.Label>Dairy Alternatives</Form.Label>
+                                <Form.Control type="number" ref={dairyaltRef} required />
+                            </Form.Group>
+                            <Form.Group id="meatalt">
+                                <Form.Label>Meat Alternatives</Form.Label>
+                                <Form.Control type="number" ref={meataltRef} required />
+                            </Form.Group>
+                            <Button className="w-100 mt-4" type="submit">
+                                Export
+                            </Button>
                             <Link to="/">Back to Dashboard</Link>
-                        </div>
-                        </div>
+                        </Form>
                         
+                        </div>                        
                     </Col>
                 </Row>
             </Container>
