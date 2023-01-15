@@ -6,6 +6,8 @@ import LeafletMap from "../components/LeafletMap/LeafletMap";
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import { Container } from "react-bootstrap";
+import Button from 'react-bootstrap/Button';
+import { Link } from "react-router-dom";
 
 
 // This is the home page of the website, write all the code for the home page here
@@ -94,16 +96,19 @@ export default function Exports() {
             {/* make a nice UI where the map is on the left and the coordinates and export options are on the right with bootstrap react*/}
             <Container fluid>
                 <Row>
-                    <Col style={{height:"100vh" }}>
-                        <div style={{width:"70vw", left:"0", position:"absolute"}}>
+                    <Col style={{ height: "100vh" }}>
+                        <div style={{ width: "70vw", left: "0", position: "absolute" }}>
                             <LeafletMap />
                         </div>
                     </Col>
                     <Col>
-                        <Row style={{width:"30vw", right:"0", position:"absolute"}}>
+                        <Row style={{ width: "30vw", right: "0", position: "absolute" }}>
                             <h1>Export</h1>
                             <h2>Latitude: {lat}</h2>
                             <h2>Longitude: {long}</h2>
+                            <div className="w-100 text-center mt-2">
+                            <Link to="/">Back to Dashboard</Link>
+                        </div>
                         </Row>
                         <Row style={{width:"30vw", right:"0", bottom:"0", position:"absolute"}}>
                             <h1>Export To</h1>
@@ -115,6 +120,7 @@ export default function Exports() {
                                 <li class="list-group-item">Dairy & Alternatives:  9</li>
                             </ul>
                         </Row>
+                        
                     </Col>
                 </Row>
             </Container>

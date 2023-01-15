@@ -135,6 +135,7 @@ export default function UpdateProfile() {
                             <Form.Control
                                 className="rounded-pill"
                                 type="number"
+                                step="any"
                                 ref={latRef}
                             />
                         </Form.Group>
@@ -143,6 +144,7 @@ export default function UpdateProfile() {
                             <Form.Control
                                 className="rounded-pill"
                                 type="number"
+                                step="any"
                                 ref={longRef}
                             />
                         </Form.Group>

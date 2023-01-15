@@ -112,6 +112,12 @@ export default function Dashboard() {
                         <strong>UID:</strong> {currentUser.uid}
                     </div>
 
+                    <Link to="/exports">
+                        <Button className="btn btn-primary w-100 mt-4 rounded-pill">Exports</Button>
+                    </Link>
+                    <Link to="/inventory">
+                        <Button className="btn btn-primary w-100 mt-4 rounded-pill">Inventory</Button>
+                    </Link>
                     <Link to="/update-profile">
                         <Button className="btn btn-primary w-100 mt-4 rounded-pill">Update Profile</Button>
                     </Link>
