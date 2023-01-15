@@ -5,6 +5,7 @@ import Login from "./pages/Login";
 import Dashboard from "./pages/Dashboard";
 import { AuthProvider } from "./pages/AuthContext";
 import { Container } from "react-bootstrap";
+import PrivateRoute from "./components/PrivateRoute";
 
 function App() {
   return(
@@ -15,7 +16,7 @@ function App() {
             <Routes>
               <Route path="/signup" element={<Signup />} />
               <Route path="/login" element={<Login />} />
-              <Route path="/" element={<Dashboard />} />
+              <Route path="/" element={<PrivateRoute><Dashboard /></PrivateRoute>} />
             </Routes>
           </AuthProvider>
         </Router>
