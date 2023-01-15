@@ -12,6 +12,7 @@ export default function InventoryItem({foodGroupTitle, desc, foodGroupDb}) { // 
     let image;
     let uid;
 
+    // getting stock start
     const [fruitsveg, setFruitsveg] = useState(null);
     const [grains, setGrains] = useState(null);
     const [dairyalt, setDairyalt] = useState(null);
@@ -35,13 +36,8 @@ export default function InventoryItem({foodGroupTitle, desc, foodGroupDb}) { // 
             });
         return { fruitsveg, grains, dairyalt, meatalt };
     }
-
-
-    onValue(ref(db, `${auth.currentUser.uid}/inventory/${foodGroupDb}`), (snapshot)=>{
-        console.log(snapshot.val())
-    })
     
-    useEffect(() => { // for getting lat/long of a uid
+    useEffect(() => { 
         getQuantities(uid)
             .then(({ fruitsveg: fruitsvegValue, grains: grainsValue, dairyalt:dairyaltValue, meatalt:meataltValue }) => {
                 setFruitsveg(fruitsvegValue);
@@ -52,7 +48,7 @@ export default function InventoryItem({foodGroupTitle, desc, foodGroupDb}) { // 
         
     }, [])
 
-
+    // getting stock end
     async function displayCounter() {
         get(ref(db, `${uid}/inventory/${foodGroupDb}`), (snapshot)=>{
             console.log(snapshot.val())
