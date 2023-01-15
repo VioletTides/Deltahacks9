@@ -46,11 +46,6 @@ export default function Exports(){
     //     /* {you'll need to add them here tho - anywhere else and it will lag the map hard} */
     //     globals.addCoords([[42.777702, -78.233238],[42.577702, -77.233238]])
     // }, [])
-
-    useEffect(() => {
-        globals.addCoords([[42.777702, -78.233238],[42.577702, -77.233238]])
-        globals.addCoords([[42.777702, -79.233238],[42.577702, -79.233238]])
-    }, [])
     
 
     return(
