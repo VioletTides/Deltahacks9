@@ -1,5 +1,5 @@
 import React, { useContext, useState, useEffect } from "react"
-import { createUserWithEmailAndPassword, signInWithEmailAndPassword } from "@firebase/auth"
+import { createUserWithEmailAndPassword, signInWithEmailAndPassword, sendPasswordResetEmail } from "@firebase/auth"
 import { auth } from "../firebase-config"
 import { signOut } from "firebase/auth"
 
@@ -26,7 +26,7 @@ export function AuthProvider({ children }) {
   }
 
   function resetPassword(email) {
-    return auth.sendPasswordResetEmail(email)
+    return sendPasswordResetEmail(auth, email)
   }
 
   function updateEmail(email) {

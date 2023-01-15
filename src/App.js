@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 import Signup from "./pages/Signup";
 import Login from "./pages/Login";
 import Dashboard from "./pages/Dashboard";
+import ForgotPassword from "./pages/ForgotPassword";
 import { AuthProvider } from "./pages/AuthContext";
 import { Container } from "react-bootstrap";
 import PrivateRoute from "./components/PrivateRoute";
@@ -17,6 +18,7 @@ function App() {
               <Route path="/signup" element={<Signup />} />
               <Route path="/login" element={<Login />} />
               <Route path="/" element={<PrivateRoute><Dashboard /></PrivateRoute>} />
+              <Route path="/forgot-password" element={<ForgotPassword />} />
             </Routes>
           </AuthProvider>
         </Router>
