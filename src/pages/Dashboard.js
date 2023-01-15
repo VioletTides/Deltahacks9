@@ -1,7 +1,6 @@
-import { initializeApp } from '@firebase/app';
-import { getFirestore } from 'firebase/firestore';
-import { getAuth } from 'firebase/auth';
 
-function Dashboard() {
-    
+export default function Dashboard() {
+    return(
+        <h2>Dashboard</h2>
+    ) 
 }
