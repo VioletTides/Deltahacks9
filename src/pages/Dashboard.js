@@ -25,7 +25,20 @@ export default function Dashboard() {
                 <Card.Body>
                     <h2 className="text-center mb-4">Profile</h2>
                     {error && <Alert variant="danger">{error}</Alert>}
-                    <strong>Email:</strong> {currentUser.email}
+                    <div>
+                        <strong>Email:</strong> {currentUser.email}
+                    </div>
+                    <div>
+                        <strong>Latitude:</strong> {currentUser.lat}
+                    </div>
+                    <div>
+                        <strong>Longtitude:</strong> {currentUser.longitute}
+                    </div>
+                    <div>
+                        <strong>UID:</strong> {currentUser.uid}
+                    </div>
+                    
+
                     <Link to="/update-profile" className="btn btn-primary w-100 mt-3">Update Profile</Link>
                 </Card.Body>
 
@@ -36,22 +49,3 @@ export default function Dashboard() {
         </>
     ) 
 }
-
-// function signup(email, password, lat, long) {
-//     createUserWithEmailAndPassword(auth, email, password).then((credentials)=> {
-//       const uid = credentials.user.uid;
-//       set(ref(db, `${uid}`), {
-//         email: email,
-//         inventory: {
-//           fruitveg: 0,
-//           dairyalt: 0,
-//           grains: 0,
-//           meatalt: 0
-//         },
-//         lat: lat,
-//         long: long,
-//       })
-//       return credentials
-//     }).catch((error)=>{
-//       return error
-//     })

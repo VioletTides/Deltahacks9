@@ -14,9 +14,25 @@ export function AuthProvider({ children }) {
   const [currentUser, setCurrentUser] = useState()
   const [loading, setLoading] = useState(true)
 
-  function signup(email, password) {
-    return createUserWithEmailAndPassword(auth, email, password)
-  }
+  function signup(email, password, lat, long) {
+    createUserWithEmailAndPassword(auth, email, password).then((credentials)=> {
+      const uid = credentials.user.uid;
+      set(ref(db, `${uid}`), {
+        email: email,
+        inventory: {
+          fruitveg: 0,
+          dairyalt: 0,
+          grains: 0,
+          meatalt: 0
+        },
+        lat: lat,
+        long: long,
+      })
+      return credentials
+    }).catch((error)=>{
+      return error
+    })
+    }
 
   function login(email, password) {
     return signInWithEmailAndPassword(auth, email, password)
