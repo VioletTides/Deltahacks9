@@ -10,6 +10,8 @@ import { Container } from "react-bootstrap";
 import PrivateRoute from "./components/PrivateRoute";
 import UpdateProfile from "./pages/UpdateProfile";
 
+import LeafletMap from "./components/LeafletMap/LeafletMap";
+
 function App() {
   return(
     <Container className="d-flex align-items-center justify-content-center" style={{ minHeight: "100vh" }}>
