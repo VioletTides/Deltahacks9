@@ -13,5 +13,5 @@ Making it possible to add multiple food banks in one export form, implementing D
 
 ## Running the Code
   - install node.js
-  - run ```npm run install```
+  - run ```npm install```
   - run ```npm run start```
