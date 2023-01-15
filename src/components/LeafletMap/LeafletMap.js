@@ -22,7 +22,7 @@ const LeafletMap = () => {
                 url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
                 />
 
-                {global.coords.map((coords) => <CreateLeafletRoute coords={coords}></CreateLeafletRoute>)}
+                {globals.coords.map((coords) => <CreateLeafletRoute coords={coords}></CreateLeafletRoute>)}
             </MapContainer>
         </>
     )
