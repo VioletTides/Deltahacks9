@@ -16,13 +16,13 @@ const LeafletMap = () => {
     //   }, [globals, globals.coords, setLeafCoords]);
     return (
         <>
-            <MapContainer center={defaultTestPosition} zoom={8} scrollWheelZoom={false} style={{width: '1000px', height: '1000px'}}>
+            <MapContainer center={defaultTestPosition} zoom={8} scrollWheelZoom={false}>
                 <TileLayer
                 attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
                 url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
                 />
 
-                {globals.coords.map((coords) => <CreateLeafletRoute coords={coords}></CreateLeafletRoute>)}
+                {globals.coords.map((coords, index) => <CreateLeafletRoute key={index} coords={coords}></CreateLeafletRoute>)}
             </MapContainer>
         </>
     )
