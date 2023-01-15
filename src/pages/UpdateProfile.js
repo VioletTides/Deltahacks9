@@ -4,6 +4,7 @@ import { useAuth } from "./AuthContext"
 import { Link, useNavigate } from "react-router-dom"
 import { db } from '../firebase-config';
 import { ref, get, set } from 'firebase/database';
+import landingpagebackground from '../assets/landingpagebackground.jpg';
 
 export default function UpdateProfile() {
     const emailRef = useRef()
@@ -75,9 +76,28 @@ export default function UpdateProfile() {
             })
     }
 
+    const style = {
+        backgroundImage: `url(${landingpagebackground})`,
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+        height: '100vh',
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
+        justifyContent: 'center',
+        width: '100vw',
+        height: '100vh',
+        top: 0,
+        left: 0,
+        right: 0,
+        bottom: 0,
+        zIndex: 1,
+        position: 'absolute',
+    };
+
     return (
-        <>
-            <Card>
+        <div style={style}>
+            <Card className="mx-auto" style={{ width: '40vw' }}>
                 <Card.Body>
                     <h2 className="text-center mb-4">Update Profile</h2>
                     {error && <Alert variant="danger">{error}</Alert>}
@@ -85,6 +105,7 @@ export default function UpdateProfile() {
                         <Form.Group id="email">
                             <Form.Label>Email</Form.Label>
                             <Form.Control
+                                className="rounded-pill"
                                 type="email"
                                 ref={emailRef}
                                 required
@@ -94,6 +115,7 @@ export default function UpdateProfile() {
                         <Form.Group id="password">
                             <Form.Label>Password</Form.Label>
                             <Form.Control
+                                className="rounded-pill"
                                 type="password"
                                 ref={passwordRef}
                                 placeholder="Leave blank to keep the same"
@@ -102,6 +124,7 @@ export default function UpdateProfile() {
                         <Form.Group id="password-confirm">
                             <Form.Label>Password Confirmation</Form.Label>
                             <Form.Control
+                                className="rounded-pill"
                                 type="password"
                                 ref={passwordConfirmRef}
                                 placeholder="Leave blank to keep the same"
@@ -110,6 +133,7 @@ export default function UpdateProfile() {
                         <Form.Group id="lat">
                             <Form.Label>Latitude</Form.Label>
                             <Form.Control
+                                className="rounded-pill"
                                 type="number"
                                 ref={latRef}
                             />
@@ -117,19 +141,19 @@ export default function UpdateProfile() {
                         <Form.Group id="long">
                             <Form.Label>Longitude</Form.Label>
                             <Form.Control
+                                className="rounded-pill"
                                 type="number"
                                 ref={longRef}
                             />
                         </Form.Group>
-                        <Button disabled={loading} className="w-100 mt-4" type="submit">
-                            Update
-                        </Button>
+                        <Button disabled={loading} className="w-100 mt-4 rounded-pill" type="submit">Update</Button>
                     </Form>
+                    <div className="w-100 text-center mt-2">
+                        <Link to="/">Cancel</Link>
+                    </div>
                 </Card.Body>
             </Card>
-            <div className="w-100 text-center mt-2">
-                <Link to="/">Cancel</Link>
-            </div>
-        </>
+
+        </div>
     )
 }

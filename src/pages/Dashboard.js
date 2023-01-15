@@ -4,6 +4,7 @@ import { useAuth } from './AuthContext';
 import { Link, useNavigate } from 'react-router-dom';
 import { db } from '../firebase-config';
 import { ref, get } from 'firebase/database';
+import landingpagebackground from '../assets/landingpagebackground.jpg';
 
 async function getLatLong(uid) {
     let lat, long;
@@ -16,7 +17,7 @@ async function getLatLong(uid) {
         .catch(error => {
             console.log(error);
         });
-    return {lat, long};
+    return { lat, long };
 }
 
 export default function Dashboard() {
@@ -27,12 +28,12 @@ export default function Dashboard() {
     const [long, setLong] = useState(null);
 
     useEffect(() => {
-        if(currentUser) {
+        if (currentUser) {
             getLatLong(currentUser.uid)
-            .then(({ lat: latValue, long: longValue }) => {
-                setLat(latValue);
-                setLong(longValue);
-            });
+                .then(({ lat: latValue, long: longValue }) => {
+                    setLat(latValue);
+                    setLong(longValue);
+                });
         }
     }, [currentUser]);
 
@@ -41,15 +42,34 @@ export default function Dashboard() {
             setError("")
             await logout()
             Navigate("/login")
-        } catch(error) {
+        } catch (error) {
             setError("Failed to log out")
             console.log(error)
         }
     }
 
-    return(
-        <>
-            <Card>
+    const style = {
+        backgroundImage: `url(${landingpagebackground})`,
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+        height: '100vh',
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
+        justifyContent: 'center',
+        width: '100vw',
+        height: '100vh',
+        top: 0,
+        left: 0,
+        right: 0,
+        bottom: 0,
+        zIndex: 1,
+        position: 'absolute',
+    };
+
+    return (
+        <div style={style}>
+            <Card className="mx-auto" style={{ width: '40vw' }}>
                 <Card.Body>
                     <h2 className="text-center mb-4">Profile</h2>
                     {error && <Alert variant="danger">{error}</Alert>}
@@ -66,13 +86,15 @@ export default function Dashboard() {
                         <strong>UID:</strong> {currentUser.uid}
                     </div>
 
-                    <Link to="/update-profile" className="btn btn-primary w-100 mt-3">Update Profile</Link>
+                    <Link to="/update-profile">
+                        <Button className="btn btn-primary w-100 mt-4 rounded-pill">Update Profile</Button>
+                    </Link>
+                    <div className="w-100 text-center mt-2">
+                        <Button variant="link" onClick={handleLogout}>Log Out</Button>
+                    </div>
                 </Card.Body>
-
             </Card>
-            <div className="w-100 text-center mt-2">
-                <Button variant="link" onClick={handleLogout}>Log Out</Button>
-            </div>
-        </>
-    ) 
+
+        </div>
+    )
 }

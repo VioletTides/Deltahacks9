@@ -15,6 +15,12 @@ inventory page
     - add and subtract
     - button to link to exports page
 
+
+LOW PRIO
+
+gh-pages
+
+
 getting lat/long
 
 const latRef = useRef();
